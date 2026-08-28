@@ -1,0 +1,50 @@
+<template>
+  <div class="space-user-analyze">
+    <a-card title="空间资源使用分析">
+      <v-chart :options="options" style="height: 320px" :loading="loading" />
+    </a-card>
+
+  </div>
+
+</template>
+
+<script setup lang="ts">
+import VChart from "vue-echarts";
+import "echarts";
+import { options } from 'axios'
+import { ref } from 'vue'
+
+
+interface Props {
+  queryAll?: boolean
+  queryPublic?: boolean
+  spaceId?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  queryAll: false,
+  queryPublic: false,
+})
+
+//加载状态
+const loading = ref(false)
+
+//图表选项
+const options = {}
+
+</script>
+
+<style scoped>
+
+</style>
+
+
+<a-card title="用户上传分析">
+  <v-chart :option="options" style="height: 320px" />
+  <template #extra>
+    <a-space>
+      <a-segmented v-model:value="timeDimension" :options="timeDimensionOptions" />
+      <a-input-search placeholder="请输入用户 id" enter-button="搜索用户" @search="doSearch" />
+    </a-space>
+  </template>
+</a-card>
