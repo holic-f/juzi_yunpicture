@@ -131,26 +131,20 @@ const canDelete = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_DELETE)
 
 // 获取图片详情
 const fetchPictureDetail = async () => {
-  const pictureId = Number(props.id)
-  if (!Number.isFinite(pictureId)) {
-    message.error('获取图片详情失败，' + res.data.message)
-    return
-  }
-
   try {
     const res = await getPictureVoByIdUsingGet({
-      id: pictureId,
+      id: props.id,
     })
     if (res.data.code === 0 && res.data.data) {
       picture.value = res.data.data
     } else {
       message.error('获取图片详情失败，' + res.data.message)
     }
-  } catch (e: unknown) {
-    const errorMessage = e instanceof Error ? e.message : String(e)
-    message.error('获取图片详情失败，' + errorMessage)
+  } catch (e: any) {
+    message.error('获取图片详情失败：' + e.message)
   }
 }
+
 
 onMounted(() => {
   fetchPictureDetail()

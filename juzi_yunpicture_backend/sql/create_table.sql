@@ -1,14 +1,14 @@
 -- 创建库
-create database if not exists yu_picture;
+create database if not exists juzi;
 
 -- 切换库
-use yu_picture;
+use juzi;
 
 -- 用户表
 create table if not exists user
 (
     id           bigint auto_increment comment 'id' primary key,
-    userAccount  varchar(256)                           not null comment '账号',
+    userAccount  varchar(128)                           not null comment '账号',
     userPassword varchar(512)                           not null comment '密码',
     userName     varchar(256)                           null comment '用户昵称',
     userAvatar   varchar(1024)                          null comment '用户头像',
@@ -19,7 +19,7 @@ create table if not exists user
     updateTime   datetime     default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     isDelete     tinyint      default 0                 not null comment '是否删除',
     UNIQUE KEY uk_userAccount (userAccount),
-    INDEX idx_userName (userName)
+    INDEX idx_userName (userName(191))
 ) comment '用户' collate = utf8mb4_unicode_ci;
 
 -- 图片表
@@ -42,9 +42,9 @@ create table if not exists picture
     updateTime   datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     isDelete     tinyint  default 0                 not null comment '是否删除',
     INDEX idx_name (name),                 -- 提升基于图片名称的查询性能
-    INDEX idx_introduction (introduction), -- 用于模糊搜索图片简介
+    INDEX idx_introduction (introduction(191)), -- 用于模糊搜索图片简介
     INDEX idx_category (category),         -- 提升基于分类的查询性能
-    INDEX idx_tags (tags),                 -- 提升基于标签的查询性能
+    INDEX idx_tags (tags(191)),                 -- 提升基于标签的查询性能
     INDEX idx_userId (userId)              -- 提升基于用户 ID 的查询性能
 ) comment '图片' collate = utf8mb4_unicode_ci;
 

@@ -1,0 +1,14 @@
+# === 本机备份与无关内容（不提交） ===
+.git_backup/
+juzi_yunpicture_backend_ddd/
+
+# === 前端 AI 工具 / 生成目录 ===
+juzi_yunpicture_frontend/.agents/
+juzi_yunpicture_frontend/.codex/
+juzi_yunpicture_frontend/.dsh-vision-toolkit/
+juzi_yunpicture_frontend/.playwright-cli/
+juzi_yunpicture_frontend/output/
+
+# === 生产配置与构建产物（不提交，含密钥） ===
+application-prod.yml
+dist.zip
