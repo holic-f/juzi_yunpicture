@@ -1,6 +1,5 @@
 # === 本机备份与无关内容（不提交） ===
 .git_backup/
-juzi_yunpicture_backend_ddd/
 
 # === 前端 AI 工具 / 生成目录 ===
 juzi_yunpicture_frontend/.agents/
@@ -12,3 +11,13 @@ juzi_yunpicture_frontend/output/
 # === 生产配置与构建产物（不提交，含密钥） ===
 application-prod.yml
 dist.zip
+
+# === 本机备份与无关内容（不提交） ===
+.git_backup/
+juzi_yunpicture_backend_ddd/.git.local-backup/
+
+# === DDD 后端模块：构建产物 / IDE 配置 / 本地配置（不提交） ===
+juzi_yunpicture_backend_ddd/target/
+juzi_yunpicture_backend_ddd/.idea/
+juzi_yunpicture_backend_ddd/HELP.md
+juzi_yunpicture_backend_ddd/src/main/resources/application-local.yml
